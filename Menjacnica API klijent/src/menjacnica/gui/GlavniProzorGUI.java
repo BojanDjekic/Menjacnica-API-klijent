@@ -46,6 +46,7 @@ public class GlavniProzorGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		GUIKontroler.iscitajIzFajla();
 		
 		JLabel lblIzValuteZemlje = new JLabel("Iz valute zemlje:");
 		lblIzValuteZemlje.setBounds(44, 36, 128, 16);
