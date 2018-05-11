@@ -17,32 +17,22 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import menjacnica.klase.Valuta;
 import menjacnica.klase.Zemlja;
 import menjacnica.util.URLConnectionUtil;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class GlavniProzorGUI extends JFrame {
-	private LinkedList<Zemlja> zemlje = new LinkedList<Zemlja>();
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GlavniProzorGUI frame = new GlavniProzorGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	JPanel contentPane;
+	JTextField textField;
+	JTextField textField_1;
 
 	/**
 	 * Create the frame.
@@ -58,51 +48,48 @@ public class GlavniProzorGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblIzValuteZemlje = new JLabel("Iz valute zemlje:");
-		lblIzValuteZemlje.setBounds(44, 60, 128, 16);
+		lblIzValuteZemlje.setBounds(44, 36, 128, 16);
 		contentPane.add(lblIzValuteZemlje);
 		
 		JLabel lblUValutuZemlje = new JLabel("U valutu zemlje:");
-		lblUValutuZemlje.setBounds(277, 60, 128, 16);
+		lblUValutuZemlje.setBounds(277, 36, 128, 16);
 		contentPane.add(lblUValutuZemlje);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(44, 104, 115, 22);
-		try {
-			String content = URLConnectionUtil.getContent("http://free.currencyconverterapi.com/api/v3/countries");
-			Gson gson = new GsonBuilder().create();
-			JsonParser jsonParser = new JsonParser();
-			JsonObject a = jsonParser.parse(content).getAsJsonObject().getAsJsonObject("results");
-
-			for (Entry<String, JsonElement> entry : a.entrySet()) {
-			    Zemlja zemlja = gson.fromJson(entry.getValue(), Zemlja.class);
-			    zemlje.add(zemlja);
-			    comboBox.addItem(zemlja.getName());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		comboBox.setBounds(44, 65, 115, 22);
+		GUIKontroler.komboBox(comboBox);
 		contentPane.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(277, 104, 115, 22);
-		try {
-			String content = URLConnectionUtil.getContent("http://free.currencyconverterapi.com/api/v3/countries");
-			Gson gson = new GsonBuilder().create();
-			JsonParser jsonParser = new JsonParser();
-			JsonObject a = jsonParser.parse(content).getAsJsonObject().getAsJsonObject("results");
-
-			for (Entry<String, JsonElement> entry : a.entrySet()) {
-			    Zemlja zemlja = gson.fromJson(entry.getValue(), Zemlja.class);
-			    zemlje.add(zemlja);
-			    comboBox_1.addItem(zemlja.getName());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		comboBox_1.setBounds(277, 65, 115, 22);
+		GUIKontroler.komboBox(comboBox_1);
 		contentPane.add(comboBox_1);
 		
 		JButton btnKonvertuj = new JButton("Konvertuj");
+		btnKonvertuj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.konverzija(comboBox.getSelectedItem().toString(), comboBox_1.getSelectedItem().toString());
+			}
+		});
 		btnKonvertuj.setBounds(167, 182, 97, 25);
 		contentPane.add(btnKonvertuj);
+		
+		JLabel lblIznos = new JLabel("Iznos");
+		lblIznos.setBounds(44, 111, 56, 16);
+		contentPane.add(lblIznos);
+		
+		JLabel lblIznos_1 = new JLabel("Iznos");
+		lblIznos_1.setBounds(277, 111, 56, 16);
+		contentPane.add(lblIznos_1);
+		
+		textField = new JTextField();
+		textField.setBounds(44, 140, 116, 22);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(277, 140, 116, 22);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
 }
