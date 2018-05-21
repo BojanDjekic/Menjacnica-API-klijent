@@ -1,0 +1,44 @@
+[
+  {
+    "datumVreme": "10.05.2018 09:46:05",
+    "izValuta": "BRL",
+    "uValuta": "AUD",
+    "kurs": 0.374073
+  },
+  {
+    "datumVreme": "10.05.2018 09:47:00",
+    "izValuta": "OMR",
+    "uValuta": "KGS",
+    "kurs": 178.680811
+  },
+  {
+    "datumVreme": "10.05.2018 09:48:56",
+    "izValuta": "EUR",
+    "uValuta": "RSD",
+    "kurs": 118.572192
+  },
+  {
+    "datumVreme": "2018-05-21 12:08:00.000224",
+    "izValuta": "XOF",
+    "uValuta": "AFN",
+    "kurs": 0.12775
+  },
+  {
+    "datumVreme": "2018-05-21 12:16:38.000261",
+    "izValuta": "AFN",
+    "uValuta": "AFN",
+    "kurs": 1.0
+  },
+  {
+    "datumVreme": "2018-05-21 12:16:41.000423",
+    "izValuta": "KHR",
+    "uValuta": "AFN",
+    "kurs": 0.017616
+  },
+  {
+    "datumVreme": "2018-05-21 12:37:22.000171",
+    "izValuta": "AFN",
+    "uValuta": "AFN",
+    "kurs": 1.0
+  }
+]

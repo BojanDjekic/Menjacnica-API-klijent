@@ -17,8 +17,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import menjacnica.klase.Valuta;
-import menjacnica.klase.Zemlja;
+import menjacnica.domen.Menjacnica;
+import menjacnica.domen.Valuta;
+import menjacnica.domen.Zemlja;
 import menjacnica.util.URLConnectionUtil;
 
 import javax.swing.JLabel;
@@ -30,9 +31,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 public class GlavniProzorGUI extends JFrame {
-	JPanel contentPane;
-	JTextField textField;
-	JTextField textField_1;
+	public JPanel contentPane;
+	public JTextField textField;
+	public JTextField textField_1;
 
 	/**
 	 * Create the frame.
@@ -46,7 +47,7 @@ public class GlavniProzorGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		GUIKontroler.iscitajIzFajla();
+		Menjacnica.iscitajIzFajla();
 		
 		JLabel lblIzValuteZemlje = new JLabel("Iz valute zemlje:");
 		lblIzValuteZemlje.setBounds(44, 36, 128, 16);
@@ -58,18 +59,18 @@ public class GlavniProzorGUI extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(44, 65, 115, 22);
-		GUIKontroler.komboBox(comboBox);
+		Menjacnica.komboBox(comboBox);
 		contentPane.add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(277, 65, 115, 22);
-		GUIKontroler.komboBox(comboBox_1);
+		Menjacnica.komboBox(comboBox_1);
 		contentPane.add(comboBox_1);
 		
 		JButton btnKonvertuj = new JButton("Konvertuj");
 		btnKonvertuj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GUIKontroler.konverzija(comboBox.getSelectedItem().toString(), comboBox_1.getSelectedItem().toString());
+				GUIKontroler.konvertuj(comboBox.getSelectedItem().toString(), comboBox_1.getSelectedItem().toString());
 			}
 		});
 		btnKonvertuj.setBounds(167, 182, 97, 25);

@@ -1,4 +1,4 @@
-package menjacnica.klase;
+package menjacnica.domen;
 
 public class Valuta {
 	private String fr;

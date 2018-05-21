@@ -1,4 +1,4 @@
-package menjacnica.klase;
+package menjacnica.domen;
 
 public class Istorija {
 	private String datumVreme;
